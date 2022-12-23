@@ -1,12 +1,13 @@
 public class Main {
+    private static Console console = new Console();
+    private static int numberOfPeople = 0;
 
     public static void main(String[] args) {
-        Console console = new Console();
 
-        console.print("На скольких человек необходимо разделить счёт");
-        int numberOfPeople = console.readInt();
-        if (numberOfPeople == 1)  console.print("На одного человека счёт делить нет смысла");
-        if (numberOfPeople < 1)  console.print("Введено некорректное число человек, попробуйте ещё раз");
+        while (numberOfPeople <= 1) {
+            numberOfPeople = getNumberOfPeopleFromUser();
+        }
+
         if (numberOfPeople > 1) {
             Calculator calculator = new Calculator(numberOfPeople);
             while (true) {
@@ -24,6 +25,14 @@ public class Main {
             }
 
         }
+    }
+
+    public static int getNumberOfPeopleFromUser() {
+        console.print("На скольких человек необходимо разделить счёт");
+        int result = console.readInt();
+        if (result == 1)  console.print("На одного человека счёт делить нет смысла");
+        if (result < 1)  console.print("Введено некорректное число человек, попробуйте ещё раз");
+        return result;
     }
 
 }
