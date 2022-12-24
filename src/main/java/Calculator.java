@@ -31,8 +31,10 @@ public class Calculator {
     }
 
     public void addItem(Item item){
-        items.add(item);
-        costSum+=item.getPrice();
+        if (item.getPrice() > 0) {
+            items.add(item);
+            costSum+=item.getPrice();
+        }
     }
 
     public void addRublesToResult(String costForEachPersonString) {
