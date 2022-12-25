@@ -10,31 +10,29 @@ public class Main {
             numberOfPeople = getNumberOfPeopleFromUser();
         }
 
-        if (numberOfPeople > 1) {
-            Calculator calculator = new Calculator(numberOfPeople);
-            while (true) {
-                console.print("введите наименование товара");
-                String nameOfItem = console.read();
-                if (nameOfItem.equalsIgnoreCase("завершить")) {
-                    console.print(calculator.calculate());
-                    return;
-                }
-                console.print("Пожалуйста, введите стоимость товара в формате \"ХХ,хх\", где ХХ - рубли, хх - копейки");
-                double priceOfItem = 0;
-                try {
-                    priceOfItem = console.readDouble();
-                } catch (InputMismatchException e) {
-                    console.print("Введена некорректная стоимость, стоимость  товара должна быть больше 0");
-                }
-
-                calculator.addItem(new Item(nameOfItem, priceOfItem));
-                if (priceOfItem > 0) console.print("Товар " + nameOfItem + " стоимостью " + priceOfItem + " добавлен");
-                if (priceOfItem <= 0) console.print("Товар " + nameOfItem + " не был добавлен из-за некорректной стоимости");
-
-                console.print("Введите \"завершить\" чтобы рассчитать или");
+        Calculator calculator = new Calculator(numberOfPeople);
+        while (true) {
+            console.print("введите наименование товара");
+            String nameOfItem = console.read();
+            if (nameOfItem.equalsIgnoreCase("завершить")) {
+                console.print(calculator.calculate());
+                return;
+            }
+            console.print("Пожалуйста, введите стоимость товара в формате \"ХХ,хх\", где ХХ - рубли, хх - копейки");
+            double priceOfItem = 0;
+            try {
+                priceOfItem = console.readDouble();
+            } catch (InputMismatchException e) {
+                console.print("Введена некорректная стоимость, стоимость  товара должна быть больше 0");
             }
 
+            calculator.addItem(new Item(nameOfItem, priceOfItem));
+            if (priceOfItem > 0) console.print("Товар " + nameOfItem + " стоимостью " + priceOfItem + " добавлен");
+            if (priceOfItem <= 0) console.print("Товар " + nameOfItem + " не был добавлен из-за некорректной стоимости");
+
+            console.print("Введите \"завершить\" чтобы рассчитать или");
         }
+
     }
 
     public static int getNumberOfPeopleFromUser() {
