@@ -2,22 +2,20 @@ import java.util.Scanner;
 
 public class Console {
 
-    private static Scanner scanner = new Scanner(System.in);
-
     public void print(String text) {
         System.out.println(text);
     }
 
     public String read() {
-        return scanner.next();
+            return new Scanner(System.in).nextLine();
     }
 
     public int readInt() {
-        return scanner.nextInt();
+            return new Scanner(System.in).nextInt();
     }
 
     public double readDouble() {
-        return scanner.nextDouble();
+            return new Scanner(System.in).nextDouble();
     }
 
 }
