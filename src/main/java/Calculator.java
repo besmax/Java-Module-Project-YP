@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+import static java.lang.Math.pow;
+
+=======
+>>>>>>> main
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +31,11 @@ public class Calculator {
                 .append("С каждого человека по ")
                 .append(costForEachPersonString);
 
+<<<<<<< HEAD
+        result.append(addRublesToResult(costSum / numberOfPeople));
+=======
         addRublesToResult(costSum / numberOfPeople);
+>>>>>>> main
 
         return result.toString();
     }
@@ -38,6 +47,30 @@ public class Calculator {
         }
     }
 
+<<<<<<< HEAD
+    public String addRublesToResult(double costForEachPerson) {
+        int twoLastDigits = getTwoLastDigits((int) costForEachPerson);
+        if (getTwoLastDigits((int) costForEachPerson) > 10 && getTwoLastDigits((int) costForEachPerson) < 15) return " рублей";
+        else if (getTwoLastDigits((int) costForEachPerson) % 10 == 1) return " рублю";
+        else if (getTwoLastDigits((int) costForEachPerson) % 10 > 1 && getTwoLastDigits((int) costForEachPerson) % 10 < 5) return " рубля";
+        else return " рублей";
+    }
+
+    public int getTwoLastDigits(int number) {
+        int result = number;
+
+        while (result >= 100) result = (int) (result - (pow(10, (getNumberLength(result)) - 1) *
+                trimNumber(result, getNumberLength(result) - 1)));
+        return result;
+    }
+
+    public int getNumberLength(int number) {
+        return (int) (Math.log10(number) + 1);
+    }
+
+    public int trimNumber(int number, int digits) {
+        return (int) (number/ pow(10, digits));
+=======
     public void addRublesToResult(double costForEachPerson) {
         int costForEachPersonInt = (int) costForEachPerson;
         switch (Integer.toString(costForEachPersonInt).substring(Integer.toString(costForEachPersonInt).length() - 2)) {
@@ -77,5 +110,6 @@ public class Calculator {
                 result.append(" рублей");
                 break;
         }
+>>>>>>> main
     }
 }
